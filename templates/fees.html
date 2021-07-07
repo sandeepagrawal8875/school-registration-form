@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <form method="post">
+      {% csrf_token %}
+      <div class="col-md-12" >
+          <div class="card m-3 border border-primary" >
+              <div class="card-header">
+                  <div class="text-center">
+                      <h5 class="text-primary">Fees</h5>
+                  </div>
+              </div>
+              <div class="card-body mt-5 ml-5 mr-5 p-5 border border-warning">
+                  <div id="div_id_class_name" class="form-group">
+                      <label for="id_class_name" class=" requiredField">
+                      Class name<span class="asteriskField">*</span> </label> 
+                      <div class="">
+                          <select name="class_name" class="select form-control" required id="id_class_name">
+                              <option value="" selected>---------</option>
+                              <option value="Class Nursery">Class Nursery</option>
+                              <option value="Class LKG">Class LKG</option>
+                              <option value="Class PRE KG">Class PRE KG</option>
+                              <option value="Class UKG">Class UKG</option>
+                              <option value="Class I">Class I</option>
+                              <option value="Class II">Class II</option>
+                              <option value="Class III">Class III</option>
+                              <option value="Class IV">Class IV</option>
+                              <option value="Class V">Class V</option>
+                              <option value="Class VI">Class VI</option>
+                              <option value="Class VII">Class VII</option>
+                              <option value="Class VIII">Class VIII</option>
+                              <option value="Class IX">Class IX</option>
+                              <option value="Class X">Class X</option>
+                              <option value="Class XI">Class XI</option>
+                              <option value="Class XII">Class XII</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div id="div_id_fee_type" class="form-group">
+                      <label for="id_fee_type" class=" requiredField">
+                      Fee type<span class="asteriskField">*</span> </label> 
+                      <div class=""> <input type="text" name="fee_type" maxlength="100" class="textinput textInput form-control" required id="id_fee_type"> </div>
+                  </div>
+                  <div id="div_id_amount" class="form-group">
+                      <label for="id_amount" class=" requiredField">
+                      Amount<span class="asteriskField">*</span> </label> 
+                      <div class=""> <input type="number" name="amount" value="0" class="numberinput form-control" required id="id_amount"> </div>
+                  </div>
+                  <div id="div_id_frequency" class="form-group">
+                      <label for="id_frequency" class=" requiredField">
+                      Frequency<span class="asteriskField">*</span> </label> 
+                      <div class="">
+                          <select name="frequency" class="select form-control" required id="id_frequency">
+                              <option value="" selected>---------</option>
+                              <option value="1">Monthly</option>
+                              <option value="4">Quarterly</option>
+                              <option value="6">Half yearly</option>
+                              <option value="12">Annually</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-add entry">
+              </div>
+              <div style="text-align:center" class="mb-3 mt-2">
+                <button onclick="duplicate(this)" class="btn btn-lg btn-primary m-2">Add</button>
+              </div>
+          </div>
+          <div style="text-align:center">
+            <button type="submit" class="btn btn-lg btn-primary m-2">submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+{% block extra-script %}
+  <script>
+    function duplicate(el) {
+        $('.form-add').append(`
+        <div class="entry">
+          <div class="card-body m-5 mt-0 p-5 border border-warning ">
+            <div id="div_id_class_name" class="form-group">
+                <label for="id_class_name" class=" requiredField">
+                Class name<span class="asteriskField">*</span> </label> 
+                <div class="">
+                    <select name="class_name" class="select form-control" required id="id_class_name">
+                        <option value="" selected>---------</option>
+                        <option value="Class Nursery">Class Nursery</option>
+                        <option value="Class LKG">Class LKG</option>
+                        <option value="Class PRE KG">Class PRE KG</option>
+                        <option value="Class UKG">Class UKG</option>
+                        <option value="Class I">Class I</option>
+                        <option value="Class II">Class II</option>
+                        <option value="Class III">Class III</option>
+                        <option value="Class IV">Class IV</option>
+                        <option value="Class V">Class V</option>
+                        <option value="Class VI">Class VI</option>
+                        <option value="Class VII">Class VII</option>
+                        <option value="Class VIII">Class VIII</option>
+                        <option value="Class IX">Class IX</option>
+                        <option value="Class X">Class X</option>
+                        <option value="Class XI">Class XI</option>
+                        <option value="Class XII">Class XII</option>
+                    </select>
+                </div>
+            </div>
+            <div id="div_id_fee_type" class="form-group">
+                <label for="id_fee_type" class=" requiredField">
+                Fee type<span class="asteriskField">*</span> </label> 
+                <div class=""> <input type="text" name="fee_type" maxlength="100" class="textinput textInput form-control" required id="id_fee_type"> </div>
+            </div>
+            <div id="div_id_amount" class="form-group">
+                <label for="id_amount" class=" requiredField">
+                Amount<span class="asteriskField">*</span> </label> 
+                <div class=""> <input type="number" name="amount" value="0" class="numberinput form-control" required id="id_amount"> </div>
+            </div>
+            <div id="div_id_frequency" class="form-group">
+                <label for="id_frequency" class=" requiredField">
+                Frequency<span class="asteriskField">*</span> </label> 
+                <div class="">
+                    <select name="frequency" class="select form-control" required id="id_frequency">
+                        <option value="" selected>---------</option>
+                        <option value="1">Monthly</option>
+                        <option value="4">Quarterly</option>
+                        <option value="6">Half yearly</option>
+                        <option value="12">Annually</option>
+                    </select>
+                </div>
+            </div>
+            <div style="text-align:right" class="mb-3 mt-2">
+                <button onclick="removeduplicate(this)" class="btn btn-sm btn-danger m-2">remove</button>
+            </div>
+          </div>
+        </div>
+        `)
+    }
+
+    function removeduplicate(el) {
+        $(el).closest(".entry").empty().trigger("change");
+    }
+
+  </script>
+{% endblock extra-script %}

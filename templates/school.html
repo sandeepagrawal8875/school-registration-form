@@ -1,0 +1,961 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="row justify-content-center">
+      <div class="col-md-6 ">
+        <div class="card m-3 border border-primary">
+          <div class="card-header">
+            <div class="text-center">
+              <h5 class="text-primary">School</h5>
+            </div>
+          </div>
+          <div class="card-body">
+              {{school_form|crispy  }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" >
+          <div class="card m-3 border border-primary" >
+              <div class="card-header">
+                  <div class="text-center">
+                      <h5 class="text-primary">Fees</h5>
+                  </div>
+              </div>
+              <div class="card-body mt-5 ml-5 mr-5 p-5 border border-warning">
+                  <div id="div_id_class_name" class="form-group">
+                      <label for="id_class_name" class=" requiredField">
+                      Class name<span class="asteriskField">*</span> </label> 
+                      <div class="">
+                          <select name="class_name" class="select form-control" required id="id_class_name">
+                              <option value="" selected>---------</option>
+                              <option value="Class Nursery">Class Nursery</option>
+                              <option value="Class LKG">Class LKG</option>
+                              <option value="Class PRE KG">Class PRE KG</option>
+                              <option value="Class UKG">Class UKG</option>
+                              <option value="Class I">Class I</option>
+                              <option value="Class II">Class II</option>
+                              <option value="Class III">Class III</option>
+                              <option value="Class IV">Class IV</option>
+                              <option value="Class V">Class V</option>
+                              <option value="Class VI">Class VI</option>
+                              <option value="Class VII">Class VII</option>
+                              <option value="Class VIII">Class VIII</option>
+                              <option value="Class IX">Class IX</option>
+                              <option value="Class X">Class X</option>
+                              <option value="Class XI">Class XI</option>
+                              <option value="Class XII">Class XII</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div id="div_id_fee_type" class="form-group">
+                      <label for="id_fee_type" class=" requiredField">
+                      Fee type<span class="asteriskField">*</span> </label> 
+                      <div class=""> <input type="text" name="fee_type" maxlength="100" class="textinput textInput form-control" required id="id_fee_type"> </div>
+                  </div>
+                  <div id="div_id_amount" class="form-group">
+                      <label for="id_amount" class=" requiredField">
+                      Amount<span class="asteriskField">*</span> </label> 
+                      <div class=""> <input type="number" name="amount" value="0" class="numberinput form-control" required id="id_amount"> </div>
+                  </div>
+                  <div id="div_id_frequency" class="form-group">
+                      <label for="id_frequency" class=" requiredField">
+                      Frequency<span class="asteriskField">*</span> </label> 
+                      <div class="">
+                          <select name="frequency" class="select form-control" required id="id_frequency">
+                              <option value="" selected>---------</option>
+                              <option value="1">Monthly</option>
+                              <option value="4">Quarterly</option>
+                              <option value="6">Half yearly</option>
+                              <option value="12">Annually</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-add entry">
+              </div>
+              <div style="text-align:center" class="mb-3 mt-2">
+                <button onclick="duplicate(this)" class="btn btn-lg btn-primary m-2">Add</button>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 ">
+            <div class="card m-3 border border-primary">
+                <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Admission</h5>
+                </div>
+                </div>
+                <div class="card-body">
+                    {{admission_form|crispy  }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="card m-3 border border-primary">
+                <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Admission Details</h5>
+                </div>
+                </div>
+                <div class="card-body">
+                    {{admission_details_form|crispy  }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 ">
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Sports Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Aerobics" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Aerobics
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Athletics" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Athletics
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Baseball" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Baseball
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Boxing" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Boxing
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Cricket" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Cricket
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Fencing" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Fencing
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Golf" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Golf
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Handball" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Handball
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Horse Riding" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Horse Riding
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Judo" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            Judo
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Karate" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Karate</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Outdoor Stadium" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Outdoor Stadium</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Play Area" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Play Area</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Shooting" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Shooting</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Soccer" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Soccer</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Sand Pit" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Sand Pit</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Squash" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Squash</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Rowing" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Rowing</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Taekwando" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Taekwando</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Throwball" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Throwball</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Yoga" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Yoga</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Football" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Football</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Gymnasium" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Gymnasium</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Hockey" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Hockey</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Indoor Stadium" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Indoor Stadium</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Kabaddi" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Kabaddi</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Kho Kho" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Kho Kho</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Netball" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Netball</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Rugby" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Rugby</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Skating" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Skating</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Splash Pool" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Splash Pool</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Sailing" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Sailing</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Swimming" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Swimming</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Table Tennis" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Table Tennis</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Tennis" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Tennis</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="sports" value="Volleyball" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Volleyball</label>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Education Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="education" value="Library" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Library</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="education" value="Digital Library" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Digital Library</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="education" value="Career Counseling" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Career Counseling</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="education" value="Counseling" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Counseling</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="education" value="Student Exchange Programs" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Student Exchange Programs</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="education" value="Test Center" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Test Center</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">classroom Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="classroom" value="AC Classrooms" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">AC Classrooms</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="classroom" value="AV Classrooms" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">AV Classrooms</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="classroom" value="Lockers" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Lockers</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Visual and Performing Art Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="visual" value="Art" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Art</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="visual" value="Dance" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Dance</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="visual" value="Dramatics" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Dramatics</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="visual" value="Music" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Music</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Laboratories Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="laboratories" value="Laboratories" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Laboratories</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="laboratories" value="Language Labs" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Language Labs</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="laboratories" value="Maths Labs" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Maths Labs</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="laboratories" value="Atal Tinkering Lab (ATL)" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Atal Tinkering Lab (ATL)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="laboratories" value="Computer Labs" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Computer Labs</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="laboratories" value="Robotics Labs" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Robotics Labs</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Transport Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="transport" value="Transport Facility" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Transport Facility</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="transport" value="AC Buses" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">AC Buses</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Boarding Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="boarding" value="Hostel" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Hostel</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="boarding" value="AC Hostels" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">AC Hostels</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Accessibility Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="accessibility" value="Accessible Parking" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Accessible Parking</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="accessibility" value="Ramped or Level Entrances" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Ramped or Level Entrances</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="accessibility" value="Accessible Washrooms" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Accessible Washrooms</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="accessibility" value="Braille and Large Print Room Numbers" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Braille and Large Print Room Numbers</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Digital Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="digital" value="AV Facilities" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">AV Facilities</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="digital" value="Interactive Boards" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Interactive Boards</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="digital" value="School App" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">School App</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="digital" value="Wi-Fi" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Wi-Fi</label>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Safety and Security Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="CCTV" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">CCTV</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="Fire Extinguisher" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Fire Extinguisher</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="Boundary Wall" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Boundary Wall</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="Speedometer In Bus" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Speedometer In Bus</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="CCTV In Bus" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">CCTV In Bus</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="School Bus Tracking App" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">School Bus Tracking App</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="Fire Alarm" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Fire Alarm</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="Security Guards" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Security Guards</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="Fenced Boundary Wall" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Fenced Boundary Wall</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="GPS In Bus" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">GPS In Bus</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="safety" value="Fire Extinguisher In Bus" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Fire Extinguisher In Bus</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Food and Catering Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="food" value="Canteen" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Canteen</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="food" value="Meal Served" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Meal Served</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="food" value="Kitchen and Dining Hall" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Kitchen and Dining Hall</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Medical Facility Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="medical" value="Medical Facility" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Medical Facility</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="medical" value="Medical Room or Clinic" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Medical Room or Clinic</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="medical" value="Resident Doctor" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Resident Doctor</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="medical" value="Medical Staff" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Medical Staff</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="medical" value="Isolation Room" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Isolation Room</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="medical" value="ICU" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">ICU</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="medical" value="Dedicated Ambulance" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Dedicated Ambulance</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3 border border-primary">
+            <div class="card-header">
+                <div class="text-center">
+                    <h5 class="text-primary">Other Infra Facilities</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="other" value="Kids Play Area" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Kids Play Area</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="other" value="Activity Center" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Activity Center</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="other" value="Toy Room" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Toy Room</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="other" value="Amphitheatre" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Amphitheatre</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="other" value="Auditorium" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Auditorium</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="other" value="Day Care" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Day Care</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-lg btn-primary m-2">submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}
+
+{% block extra-script %}
+  <script>
+    function duplicate(el) {
+        $('.form-add').append(`
+        <div class="entry">
+          <div class="card-body m-5 mt-0 p-5 border border-warning ">
+            <div id="div_id_class_name" class="form-group">
+                <label for="id_class_name" class=" requiredField">
+                Class name<span class="asteriskField">*</span> </label> 
+                <div class="">
+                    <select name="class_name" class="select form-control" required id="id_class_name">
+                        <option value="" selected>---------</option>
+                        <option value="Class Nursery">Class Nursery</option>
+                        <option value="Class LKG">Class LKG</option>
+                        <option value="Class PRE KG">Class PRE KG</option>
+                        <option value="Class UKG">Class UKG</option>
+                        <option value="Class I">Class I</option>
+                        <option value="Class II">Class II</option>
+                        <option value="Class III">Class III</option>
+                        <option value="Class IV">Class IV</option>
+                        <option value="Class V">Class V</option>
+                        <option value="Class VI">Class VI</option>
+                        <option value="Class VII">Class VII</option>
+                        <option value="Class VIII">Class VIII</option>
+                        <option value="Class IX">Class IX</option>
+                        <option value="Class X">Class X</option>
+                        <option value="Class XI">Class XI</option>
+                        <option value="Class XII">Class XII</option>
+                    </select>
+                </div>
+            </div>
+            <div id="div_id_fee_type" class="form-group">
+                <label for="id_fee_type" class=" requiredField">
+                Fee type<span class="asteriskField">*</span> </label> 
+                <div class=""> <input type="text" name="fee_type" maxlength="100" class="textinput textInput form-control" required id="id_fee_type"> </div>
+            </div>
+            <div id="div_id_amount" class="form-group">
+                <label for="id_amount" class=" requiredField">
+                Amount<span class="asteriskField">*</span> </label> 
+                <div class=""> <input type="number" name="amount" value="0" class="numberinput form-control" required id="id_amount"> </div>
+            </div>
+            <div id="div_id_frequency" class="form-group">
+                <label for="id_frequency" class=" requiredField">
+                Frequency<span class="asteriskField">*</span> </label> 
+                <div class="">
+                    <select name="frequency" class="select form-control" required id="id_frequency">
+                        <option value="" selected>---------</option>
+                        <option value="1">Monthly</option>
+                        <option value="4">Quarterly</option>
+                        <option value="6">Half yearly</option>
+                        <option value="12">Annually</option>
+                    </select>
+                </div>
+            </div>
+            <div style="text-align:right" class="mb-3 mt-2">
+                <button onclick="removeduplicate(this)" class="btn btn-sm btn-danger m-2">remove</button>
+            </div>
+          </div>
+        </div>
+        `)
+    }
+
+    function removeduplicate(el) {
+        $(el).closest(".entry").empty().trigger("change");
+    }
+
+  </script>
+{% endblock extra-script %}
